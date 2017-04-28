@@ -205,6 +205,7 @@ public class GMRFSkyrideBlockUpdateOperator extends AbstractCoercableOperator {
             if (numberIterations > maxIterations) {
                 Logger.getLogger("dr.evomodel.coalescent.operators.GMRFSkyrideBlockUpdateOperator").fine("Newton-Raphson F");
                 throw new RuntimeException("Newton Raphson algorithm did not converge within " + maxIterations + " step to a norm less than " + stopValue + "\n" +
+                		"Norm was " + gradient(data, iterateGamma, proposedQ).norm(Vector.Norm.Two) +  "\n" +
                         "Try starting BEAST with a more accurate initial tree.");
             }
         }
