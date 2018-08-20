@@ -30,7 +30,6 @@ import dr.inference.loggers.Loggable;
 import dr.inference.model.AbstractModelLikelihood;
 import dr.inference.model.Parameter;
 import dr.inference.model.Variable;
-import dr.inference.model.Variable.ChangeType;
 import dr.inference.model.Model;
 
 /**
@@ -73,7 +72,7 @@ public class StutteringChainLikelihood extends AbstractModelLikelihood implement
 	}
 
 	public Model getModel() {
-		return null;
+		return this;
 	}
 
 	public double getLogLikelihood() {
