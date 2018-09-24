@@ -291,6 +291,8 @@ public class GMRFMultilocusSkyrideBlockUpdateOperator extends AbstractCoercableO
 
         double currentLambda = this.lambdaParameter.getParameterValue(0);
         double proposedLambda = this.getNewLambda(currentLambda, lambdaScaleFactor);
+        
+        System.err.println("Current: " +  currentPrecision + " New: " + proposedPrecision);
 
         precisionParameter.setParameterValue(0, proposedPrecision);
         lambdaParameter.setParameterValue(0, proposedLambda);
@@ -397,6 +399,7 @@ public class GMRFMultilocusSkyrideBlockUpdateOperator extends AbstractCoercableO
 
         hRatio += logGeneralizedDeterminant(backwardCholesky.getU()) - 0.5 * diagonal1.dot(diagonal3);
         hRatio -= logGeneralizedDeterminant(forwardCholesky.getU() ) - 0.5 * stand_norm.dot(stand_norm);
+        hRatio += -(Math.log(proposedPrecision)-Math.log(currentPrecision)); // HR = 1/u; u = new/old
 
        return hRatio;
     }
